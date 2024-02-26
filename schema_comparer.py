@@ -1,6 +1,7 @@
 import json
 from url_parser import UrlTemplate
 
+
 class SchemaComparer:
     def __init__(self, url_template, url_compare, headers=None):
         self.url_template = UrlTemplate(url_template, headers=headers)

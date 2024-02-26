@@ -40,6 +40,10 @@ class UrlTemplate:
         return re.sub(r'[\x00-\x1F\x7F-\x9F]', '', text)
 
     def check_required_keys(self):
+        if self.metadata is None:
+            print(f"Error: Metadata does not exist for {self.url}.")
+            return
+
         required_keys = ["@context", "@type", "name", "image", "description", "sku", "brand", "offers", "aggregateRating"]
 
         for key in required_keys:
