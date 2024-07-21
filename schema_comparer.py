@@ -44,13 +44,13 @@ class SchemaComparer:
         return empty_keys
 
     def compare_schemas(self):
-        self.url_compare.get_metadata()
+        self.url_compare.get_metadata()  # Получаем метаданные только для объекта UrlTemplate
 
         print(f"\nMetadata for {self.url_compare.url} (Product type):")
         print(json.dumps(self.url_compare.metadata, indent=2))
 
         if self.url_compare.metadata:
-            missing_keys_compare = self.find_missing_keys(self.template_schema, self.url_compare.metadata)
+            missing_keys_compare = self.find_missing_keys(self.url_compare.metadata, self.template_schema)
 
             print(f"\nMissing Keys in {self.url_compare.url} compared to template schema:")
             print(missing_keys_compare)
